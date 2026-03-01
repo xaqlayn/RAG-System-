@@ -1,0 +1,13 @@
+[project]
+name = "pythonproject101"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "bs4>=0.0.2",
+    "langchain>=1.2.10",
+    "langchain-community",
+    "langchain-ollama",
+    "langchain-text-splitters>=1.1.1",
+    "pypdf",
+]
