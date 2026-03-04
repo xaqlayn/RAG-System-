@@ -37,3 +37,14 @@ Download and install Ollama from [ollama.com](https://ollama.com/). Once install
 ```bash
 ollama pull llama2
 ollama pull nomic-embed-text
+
+### Clone the repository
+git clone https://github.com/xaqlayn/RAG-System-.git
+cd RAG-System-
+
+### Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+### Install the dependencies
+pip install -r requirements.txt
