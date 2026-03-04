@@ -1,92 +1,39 @@
-# PythonProject101: RAG Pipeline with LangChain & Ollama
+# 🦙 Local RAG System
 
-This project implements a Retrieval-Augmented Generation (RAG) pipeline to query and interact with PDF documents. It uses LangChain for orchestration, Ollama for local LLM and embedding models, and `uv` for dependency management.
+A fully local, privacy-first **Retrieval-Augmented Generation (RAG)** system. This project allows you to interact with your private documents using **Llama 2** and **Nomic Embeddings**, ensuring that no data ever leaves your machine.
 
-## Overview
+---
 
-The pipeline performs the following steps:
-1.  **Load**: Loads a PDF document (e.g., `nke-10k-2023.pdf`).
-2.  **Split**: Splits the document into manageable chunks.
-3.  **Embed & Store**: Generates embeddings using Ollama and stores them in an in-memory vector store.
-4.  **Retrieve**: Performs similarity searches to find relevant chunks for a given query.
-5.  **Augment & Generate**: (Optional) Uses an agent-like setup to answer questions based on the retrieved context.
+## 🌟 Key Features
+* **Total Privacy:** Runs 100% locally via **Ollama**. No cloud APIs, no data leaks.
+* **Advanced Embeddings:** Utilizes `nomic-embed-text` for high-performance semantic search.
+* **Smart Retrieval:** Powered by **ChromaDB** for efficient vector storage and document indexing.
+* **Context-Aware Chat:** Uses **Llama 2** to generate answers grounded strictly in your provided documents.
 
-## Requirements
+---
 
-- **Python**: 3.13 or higher (managed via `uv`)
-- **Ollama**: Installed and running locally.
-- **Models**:
-    - LLM: `llama3.1:8b` (default, configurable)
-    - Embeddings: `nomic-embed-text` (default, configurable)
-- **Data**: A PDF file (defaults to `./nke-10k-2023.pdf`).
+## 🏗️ Architecture
+1.  **Ingest:** Load documents (PDF, TXT, MD) from the `data/` directory.
+2.  **Split:** Break text into optimized chunks using `RecursiveCharacterTextSplitter`.
+3.  **Embed:** Convert text chunks into vectors using the **Nomic** model via Ollama.
+4.  **Store:** Save vectors into a local **ChromaDB** instance.
+5.  **Query:** Retrieve relevant context and generate a response using **Llama 2**.
 
-## Project Structure
+---
 
-```text
-.
-├── Configuration.py            # Settings and environment configuration
-├── Pipeline_steps.py           # Core RAG steps: load, split, build vector store
-├── Retriever_tool_agent_setup.py # Retriever chains, tools, and agent demo logic
-├── main.py                     # Main entry point for the pipeline
-├── nke-10k-2023.pdf            # Sample data (Nike 10-K report)
-├── pyproject.toml              # Project dependencies and metadata
-└── uv.lock                     # Lock file for deterministic dependencies
-```
+## 🛠️ Tech Stack
+* **LLM:** [Llama 2](https://ollama.com/library/llama2)
+* **Embeddings:** [Nomic-Embed-Text](https://ollama.com/library/nomic-embed-text)
+* **Orchestration:** [LangChain](https://python.langchain.com/)
+* **Vector Database:** [ChromaDB](https://www.trychroma.com/)
+* **Environment:** [Ollama](https://ollama.com/)
 
-## Setup
+---
 
-1.  **Install `uv`**:
-    Follow the [official installation guide](https://github.com/astral-sh/uv).
+## 🚀 Getting Started
 
-2.  **Install Dependencies**:
-    ```bash
-    uv sync
-    ```
-
-3.  **Prepare Ollama**:
-    Ensure Ollama is running and pull the required models:
-    ```bash
-    ollama pull llama3.1:8b
-    ollama pull nomic-embed-text
-    ```
-
-## Usage
-
-To run the main RAG pipeline and agent demo:
-
+### 1. Install Ollama
+Download and install Ollama from [ollama.com](https://ollama.com/). Once installed, pull the required models:
 ```bash
-uv run main.py
-```
-
-This will:
-- Load the PDF specified in `Configuration.py`.
-- Split it into chunks and build a vector store.
-- Run a few basic test queries.
-- Demonstrate a retriever chain batch execution.
-- Launch an agent demo answering "When was Nike incorporated?".
-
-## Configuration
-
-Settings are managed in `Configuration.py` via the `Settings` dataclass. You can modify:
-
-- `pdf_path`: Path to your PDF file.
-- `llm_model`: The Ollama LLM model name.
-- `embedding_model`: The Ollama embedding model name.
-- `chunk_size` / `chunk_overlap`: Text splitting parameters.
-
-### Environment Variables
-- `no_proxy` / `NO_PROXY`: Set to `localhost,127.0.0.1` by default in `Configuration.configure_environment()` to ensure local communication with Ollama.
-
-## Scripts
-
-The following entry points are available:
-
-- `main.py`: The primary script to execute the full pipeline.
-
-## Tests
-
-- [ ] **TODO**: Add automated tests for pipeline steps and retriever logic.
-
-## License
-
-- [ ] **TODO**: Specify the license for this project.
+ollama pull llama2
+ollama pull nomic-embed-text
