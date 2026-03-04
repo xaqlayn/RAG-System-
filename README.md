@@ -13,7 +13,7 @@ A fully local, privacy-first **Retrieval-Augmented Generation (RAG)** system. Th
 ---
 
 ## 🏗️ Architecture
-1.  **Ingest:** Load documents (PDF, TXT, MD) from the `data/` directory.
+1.  **Ingest:** Load documents (PDF, TXT, MD) of a private company data set,which i cant to upload due to company restrictions.
 2.  **Split:** Break text into optimized chunks using `RecursiveCharacterTextSplitter`.
 3.  **Embed:** Convert text chunks into vectors using the **Nomic** model via Ollama.
 4.  **Store:** Save vectors into a local **ChromaDB** instance.
