@@ -1,5 +1,10 @@
 .venv/
 __pycache__/
+*.pyc
 ollama_storage/
-*.pdf
+.idea/
 .DS_Store
+
+# Sample document is intentionally tracked so the demo works out of the box
+*.pdf
+!nke-10k-2023.pdf

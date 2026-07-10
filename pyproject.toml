@@ -1,7 +1,7 @@
 [project]
-name = "pythonproject101"
+name = "rag-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Local, privacy-first RAG agent that answers questions over Nike's 2023 10-K using Ollama, LangChain, and Streamlit"
 requires-python = ">=3.13"
 dependencies = [
     "bs4>=0.0.2",
